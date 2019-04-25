@@ -22,7 +22,7 @@
         <GroupBox Header="Systems settings"  Name="groupBox1"  Grid.Row="0" >
 
             <StackPanel>
-                <TextBox  TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top"  Name="tbSettingText" TextChanged="TextBox_TextChanged" Margin="0,1,0,1" />
+                <TextBox  TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top"  Name="tbSettingText" Margin="0,1,0,1" />
                 <Grid Margin="0,4,0,2" >
                     <Grid.RowDefinitions>
                         <RowDefinition/>
