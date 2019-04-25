@@ -1,0 +1,123 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Revit.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="pipes" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="pipesf" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="pipesa" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="pathim" Type="System.String" Scope="User">
+      <Value Profile="(Default)">C:\Users\USER\Desktop\import.txt</Value>
+    </Setting>
+    <Setting Name="pathex" Type="System.String" Scope="User">
+      <Value Profile="(Default)">C:\ProgramData\Autodesk\Revit\Addins\2019\credentials.json</Value>
+    </Setting>
+    <Setting Name="ID" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="list_syst" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="plumbing" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="accecory" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="fitting" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="pipe" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="insulation" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="flex" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="counter" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="TD" Type="System.String" Scope="User">
+      <Value Profile="(Default)">*</Value>
+    </Setting>
+    <Setting Name="worksetvar" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="viewsvar" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="linksvar" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="purgevar" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="cadvar" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="listvar" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="spname1" Type="System.String" Scope="User">
+      <Value Profile="(Default)">_entools1</Value>
+    </Setting>
+    <Setting Name="spname2" Type="System.String" Scope="User">
+      <Value Profile="(Default)">_entools2</Value>
+    </Setting>
+    <Setting Name="spname3" Type="System.String" Scope="User">
+      <Value Profile="(Default)">_entools3</Value>
+    </Setting>
+    <Setting Name="spname4" Type="System.String" Scope="User">
+      <Value Profile="(Default)">_entools4</Value>
+    </Setting>
+    <Setting Name="spname5" Type="System.String" Scope="User">
+      <Value Profile="(Default)">_entools5</Value>
+    </Setting>
+    <Setting Name="spname6" Type="System.String" Scope="User">
+      <Value Profile="(Default)">_entools6</Value>
+    </Setting>
+    <Setting Name="spname7" Type="System.String" Scope="User">
+      <Value Profile="(Default)">_entools7</Value>
+    </Setting>
+    <Setting Name="spname8" Type="System.String" Scope="User">
+      <Value Profile="(Default)">_entools8</Value>
+    </Setting>
+    <Setting Name="koef_p" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">1.1</Value>
+    </Setting>
+    <Setting Name="koef_i" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">1.1</Value>
+    </Setting>
+    <Setting Name="eworkset" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="spname9" Type="System.String" Scope="User">
+      <Value Profile="(Default)">_entools9</Value>
+    </Setting>
+    <Setting Name="spname10" Type="System.String" Scope="User">
+      <Value Profile="(Default)">_entools10</Value>
+    </Setting>
+    <Setting Name="defaults" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="sheet" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="jsonn" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="revit" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="gs" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>
