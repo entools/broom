@@ -9,9 +9,10 @@ namespace Revit
     /// <summary>
     /// Логика взаимодействия для UserControl2.xaml
     /// </summary>
-    
+
     public partial class UserControl2 : Window
     {
+        bool com = false;
         public UserControl2(ExternalCommandData revit)
         {
             InitializeComponent();
@@ -20,7 +21,11 @@ namespace Revit
             wins.Name = "txt";
             wins.ShowDialog();
             Broom broom = new Broom();
-            broom.DelView(revit);
+
+            if (com == true)
+            {
+                broom.DelView(revit);
+            }
         }
 
 
@@ -29,9 +34,10 @@ namespace Revit
             wins.Close();
         }
 
-        
+
         private void Button_OK(object sender, RoutedEventArgs e)
         {
+            com = true;
             Revit.Properties.Settings.Default["names"] = tbSettingText.Text;
             Revit.Properties.Settings.Default.Save();
             wins.Close();
@@ -41,7 +47,7 @@ namespace Revit
         private void Button_Apply(object sender, RoutedEventArgs e)
         {
             Revit.Properties.Settings.Default["names"] = tbSettingText.Text;
-            Revit.Properties.Settings.Default.Save();  
+            Revit.Properties.Settings.Default.Save();
         }
 
 
