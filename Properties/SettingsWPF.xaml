@@ -6,95 +6,29 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Revit"
-             mc:Ignorable="d"     
-             d:DesignHeight="600" d:DesignWidth="400" MaxWidth="400" MaxHeight="600">
+             mc:Ignorable="d" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Height="200" Width="400" Title="ENTOOLS BROOM">
+    
+    <Window.Resources>
+        <ResourceDictionary Source="StyleButton.xaml"></ResourceDictionary>
+    </Window.Resources>
 
 
-    <Grid Background="White" >
+    <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="170*"></RowDefinition>
-            <RowDefinition Height="250*"></RowDefinition>
-            <RowDefinition Height="110*"></RowDefinition>
-            <RowDefinition Height="90*"></RowDefinition>
+            <RowDefinition/>
+            <RowDefinition Height="50"/>
         </Grid.RowDefinitions>
-
-
-        <GroupBox Header="Systems settings"  Name="groupBox1"  Grid.Row="0" >
-
-            <StackPanel>
-                <TextBox  TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top"  Name="tbSettingText" Margin="0,1,0,1" />
-                <Grid Margin="0,4,0,2" >
-                    <Grid.RowDefinitions>
-                        <RowDefinition/>
-                        <RowDefinition/>
-                        <RowDefinition/>
-
-
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
-                    </Grid.ColumnDefinitions>
-
-                    <StackPanel Grid.Column="0" Margin="0,0,0,0"/>
-                    <StackPanel Grid.Row="1" Grid.Column="0" Margin="0,0,0,0"/>
-                    <StackPanel Grid.Column="1" Margin="0,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" />
-                    <StackPanel Grid.Column="1" Grid.Row="1" Margin="0,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-                    <StackPanel Grid.Row="2" Grid.Column="0" Margin="0,2,0,0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-                    <StackPanel Grid.Column="2" Grid.Row="1"  VerticalAlignment="Center"/>
-                    <StackPanel  Grid.Column="2" Grid.Row="0"/>
-                    <StackPanel  Grid.Column="2" Grid.Row="1"/>
-
-                    <StackPanel  Grid.Column="3" Grid.Row="0" Margin="0,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-                    <StackPanel  Grid.Column="3" Grid.Row="1" Margin="0,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-
-                </Grid>
-
-
-
-
-
-
-
-
-
-            </StackPanel>
-
-        </GroupBox>
-
-        <Grid  Grid.Row="3">
-            <Grid.RowDefinitions>
-                <RowDefinition></RowDefinition>
-
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition></ColumnDefinition>
-                <ColumnDefinition></ColumnDefinition>
-                <ColumnDefinition></ColumnDefinition>
-                <ColumnDefinition></ColumnDefinition>
-            </Grid.ColumnDefinitions>
-            <StackPanel Grid.Row="0" Grid.Column="1">
-                <Button Content="Ok" HorizontalAlignment="Center"   VerticalAlignment="Bottom" Width="85" Margin="2,50,2,2" Click="Button_OK" />
-            </StackPanel>
-            <StackPanel Grid.Row="0" Grid.Column="2">
-                <Button Content="Apply" HorizontalAlignment="Center"   VerticalAlignment="Bottom" Width="85" Margin="2,50,2,2" Click="Button_Apply" />
-            </StackPanel>
-            <StackPanel Grid.Row="0" Grid.Column="3">
-                <Button Content="Cancel" HorizontalAlignment="Center"   VerticalAlignment="Bottom" Width="85" Click="Button_Cancel" Margin="2,50,2,2"/>
-            </StackPanel>
-        </Grid>
-
-
-
-
-
-
-
-
-
+        <TextBox ToolTip="Please, fill comma separated sheet and view name which need save" 
+                 Text="Please fill this field" 
+                 TextWrapping="Wrap" 
+                 AcceptsReturn="True" 
+                 VerticalScrollBarVisibility="Auto" Name="tbSettingText"/>
+        <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Right" >
+            <Button Style="{StaticResource GetButton}" Margin="5" Width="100" Content="OK" Click="Button_OK"/>
+            <Button Style="{StaticResource GetButton}" Margin="5" Width="100" Content="CANCEL" Click="Button_Cancel"/>
+        </StackPanel>
     </Grid>
 
-
 </Window>
+
+
