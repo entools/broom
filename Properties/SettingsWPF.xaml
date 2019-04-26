@@ -6,7 +6,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Revit"
-             mc:Ignorable="d" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Height="200" Width="400" Title="ENTOOLS BROOM">
+             mc:Ignorable="d" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Height="200" Width="400" Title="ENTOOLS BROOM" BorderThickness="2">
     
     <Window.Resources>
         <ResourceDictionary Source="StyleButton.xaml"></ResourceDictionary>
@@ -22,9 +22,10 @@
                  Text="Please fill this field" 
                  TextWrapping="Wrap" 
                  AcceptsReturn="True" 
-                 VerticalScrollBarVisibility="Auto" Name="tbSettingText"/>
+                 VerticalScrollBarVisibility="Auto" Name="tbSettingText"
+                 Margin="5"/>
         <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Right" >
-            <Button Style="{StaticResource GetButton}" Margin="5" Width="100" Content="OK" Click="Button_OK"/>
+            <Button Style="{StaticResource GetButton}"  Width="100" Content="OK" Click="Button_OK"/>
             <Button Style="{StaticResource GetButton}" Margin="5" Width="100" Content="CANCEL" Click="Button_Cancel"/>
         </StackPanel>
     </Grid>
