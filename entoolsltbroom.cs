@@ -22,7 +22,7 @@ namespace Revit.SDK.Entools.Ribbon.CS
                 RibbonPanel panel = application.CreateRibbonPanel("Broom");
                 PushButtonData list = new PushButtonData("Broom", "Broom", AddInPath, "Revit.SDK.Entools.Ribbon.CS.Broom")
                 {
-                    ToolTip = "txt"
+                    ToolTip = "Delete views and sheets"
                 };
 
                 PushButton billButton = panel.AddItem(list) as PushButton;
