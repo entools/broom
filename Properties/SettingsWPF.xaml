@@ -17,16 +17,16 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition/>
-            <RowDefinition Height="50"/>
+            <RowDefinition Height="45"/>
         </Grid.RowDefinitions>
         <TextBox ToolTip="Please, fill comma separated sheet and view name which need save" 
                  Text="Please fill this field" 
                  TextWrapping="Wrap" 
                  AcceptsReturn="True" 
                  VerticalScrollBarVisibility="Auto" Name="tbSettingText"
-                 Margin="5"/>
+                 Margin="5,5,5,0"/>
         <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Right" >
-            <Button Style="{StaticResource GetButton}"  Width="100" Content="OK" Click="Button_OK"/>
+            <Button Style="{StaticResource GetButton}" Margin="6,0,0,0" Width="100" Content="OK" Click="Button_OK"/>
             <Button Style="{StaticResource GetButton}" Margin="5" Width="100" Content="CANCEL" Click="Button_Cancel"/>
         </StackPanel>
     </Grid>
