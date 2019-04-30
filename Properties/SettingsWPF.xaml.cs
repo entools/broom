@@ -18,7 +18,7 @@ namespace Revit
             InitializeComponent();
             tbSettingText.Text = Revit.Properties.Settings.Default["names"].ToString();
 
-            wins.Name = "txt";
+            //wins.Name = "txt";
             wins.ShowDialog();
             Broom broom = new Broom();
 
@@ -43,18 +43,5 @@ namespace Revit
             wins.Close();
         }
 
-
-        private void Button_Apply(object sender, RoutedEventArgs e)
-        {
-            Revit.Properties.Settings.Default["names"] = tbSettingText.Text;
-            Revit.Properties.Settings.Default.Save();
-        }
-
-
-        private void NumberValidationTextBox(object sender, TextCompositionEventArgs e)
-        {
-            Regex regex = new Regex("[^0-9,]+");
-            e.Handled = regex.IsMatch(e.Text);
-        }
     }
 }
