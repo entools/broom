@@ -27,8 +27,8 @@ namespace Revit.SDK.Entools.Ribbon.CS
 
                 PushButton billButton = panel.AddItem(list) as PushButton;
 
-                billButton.LargeImage = new BitmapImage(new Uri(Path.Combine(ButtonIconsFolder, "entools_img\\broom_24.png"), UriKind.Absolute));
-                billButton.Image = new BitmapImage(new Uri(Path.Combine(ButtonIconsFolder, "entools_img\\broom_20.png"), UriKind.Absolute));
+                billButton.LargeImage = new BitmapImage(new Uri(Path.Combine(ButtonIconsFolder, "entools_img\\broom_large.png"), UriKind.Absolute));
+                billButton.Image = new BitmapImage(new Uri(Path.Combine(ButtonIconsFolder, "entools_img\\broom.png"), UriKind.Absolute));
 
                 //CreateRibbonEntoolsPanel(application);
                 return Autodesk.Revit.UI.Result.Succeeded;
