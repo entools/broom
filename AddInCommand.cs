@@ -53,7 +53,7 @@ namespace Revit.SDK.Entools.Ribbon.CS
             int i = 0;
             bool flag = false;
 
-            string[] separators = { ",", " " };
+            string[] separators = { "|" };//, " " };
             string[] words = names.Split(separators, StringSplitOptions.RemoveEmptyEntries);
 
             foreach (Element e in views)
