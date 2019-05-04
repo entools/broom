@@ -24,6 +24,22 @@ namespace Revit.SDK.Entools.Ribbon.CS
                 {
                     ToolTip = "Delete views and sheets"
                 };
+                list.LongDescription =
+                 "Entools Broom is created to remove unused views," +
+                 "legends, sheets and schedules.";
+
+                // Context (F1) Help - new in 2013 
+                //string appData = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData); 
+
+                string path;
+                path = System.IO.Path.GetDirectoryName(
+                   System.Reflection.Assembly.GetExecutingAssembly().Location);
+
+                ContextualHelp contextHelp = new ContextualHelp(
+                    ContextualHelpType.ChmFile,
+                    path + @"\EnToolsBroomHelp.htm"); // hard coding for simplicity. 
+
+                list.SetContextualHelp(contextHelp);
 
                 PushButton billButton = panel.AddItem(list) as PushButton;
 
@@ -44,6 +60,5 @@ namespace Revit.SDK.Entools.Ribbon.CS
         {
             return Autodesk.Revit.UI.Result.Succeeded;
         }
-
     }
 }
