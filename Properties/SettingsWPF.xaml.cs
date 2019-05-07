@@ -24,7 +24,7 @@ namespace Revit
 
             if (com == true)
             {
-                broom.DelView(revit);
+                broom.Analyze(revit);
             }
         }
 
