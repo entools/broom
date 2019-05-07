@@ -27,6 +27,82 @@ namespace Revit.SDK.Entools.Ribbon.CS
         }
 
 
+        public void Analyze(ExternalCommandData revit)
+        {
+            UIApplication uiapp = revit.Application;
+            UIDocument uidoc = uiapp.ActiveUIDocument;
+            Document doc = uidoc.Document;
+
+            List<Element> views = new List<Element>() { };
+
+            List<BuiltInCategory> cats = new List<BuiltInCategory>()
+            {
+                BuiltInCategory.OST_Views,
+                BuiltInCategory.OST_Schedules,
+                BuiltInCategory.OST_Sheets,
+            };
+
+            foreach (BuiltInCategory cat in cats)
+            {
+                IList<Element> elements = AllElnew(doc, cat);
+                views.AddRange(elements.ToList());
+            }
+
+            string names = Revit.Properties.Settings.Default["names"].ToString();
+
+            string[] separators = { "|" };
+            string[] words = names.Split(separators, StringSplitOptions.RemoveEmptyEntries);
+
+            string report_warning = "";
+
+            foreach (var word in words)
+            {
+                bool warning = true;
+                foreach (Element e in views)
+                {
+                    if (word == e.Name)
+                    {
+                        warning = false;
+                        break;
+                    }
+                }
+                if (warning == true)
+                {
+                    report_warning = report_warning + word + "\n";
+                }
+            }
+
+            bool dialog = true;
+
+            if (report_warning != "")
+            {
+                TaskDialog td = new TaskDialog("Report");
+                td.Title = "Report";
+                //td.MainInstruction = "View's name:";
+                td.MainContent = "View's name:\n"
+                    + report_warning 
+                    + "do not exist in the project."
+                    + "Do you want to continue?"
+                    ;
+
+                td.CommonButtons = 
+                    TaskDialogCommonButtons.No | 
+                    TaskDialogCommonButtons.Yes;
+
+                TaskDialogResult taskDialogResult = td.Show();
+
+                if (taskDialogResult == TaskDialogResult.No)
+                {
+                    dialog = false;
+                }
+            }
+            if (dialog == true)
+            {
+                DelView(revit);
+            }
+        }
+
+
         public void DelView(ExternalCommandData revit)
         {
             UIApplication uiapp = revit.Application;
