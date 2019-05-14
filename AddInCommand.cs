@@ -100,6 +100,22 @@ namespace Revit.SDK.Entools.Ribbon.CS
             {
                 DelView(revit);
             }
+
+            //---Version_2.0---//
+            //-----------------//
+
+            if (1 == 0)
+            {
+                Delete_RVT_link(revit);
+            }
+
+            if (1 == 0)
+            {
+                DeleteImportsNotLinks(revit);
+            }
+
+            //-----------------//
+            //---Version_2.0---//
         }
 
 
@@ -176,7 +192,100 @@ namespace Revit.SDK.Entools.Ribbon.CS
             //throw new NotImplementedException();
         }
 
- 
+        //---Version_2.0---//
+        //-----------------//
+
+        public void DeleteImportsNotLinks(ExternalCommandData revit)
+        {
+            UIApplication uiapp = revit.Application;
+            UIDocument uidoc = uiapp.ActiveUIDocument;
+            Document doc = uidoc.Document;
+
+            //ist<Element> delta = new List<Element>() { };
+
+            //string names = Revit.Properties.Settings.Default["names_cad"].ToString();
+            //int i = 0;
+            //bool flag = false;
+
+            //string[] separators = { "|" };
+            //string[] words = names.Split(separators, StringSplitOptions.RemoveEmptyEntries);
+
+            IList<ElementId> categoryIds = new List<ElementId>();
+
+            foreach (ImportInstance link in new FilteredElementCollector(doc)
+                .OfClass(typeof(ImportInstance))
+                .Cast<ImportInstance>())
+
+            {
+                ElementId catId = link.Category.Id;
+                if (!categoryIds.Contains(catId))
+                    categoryIds.Add(catId);
+            }
+
+            using (Transaction t = new Transaction(doc, "Delete Import Categories"))
+            {
+                t.Start();
+                doc.Delete(categoryIds);
+                t.Commit();
+            }
+            TaskDialog.Show("Report", "Deleted CAD-link.");
+        }
+
+
+        public void Delete_RVT_link(ExternalCommandData revit)
+        {
+            UIApplication uiapp = revit.Application;
+            UIDocument uidoc = uiapp.ActiveUIDocument;
+            Document doc = uidoc.Document;
+
+            List<Element> delta = new List<Element>() { };
+
+            string names = Revit.Properties.Settings.Default["names_rvt"].ToString();
+            int i = 0;
+            bool flag = false;
+
+            string[] separators = { "|" };
+            string[] words = names.Split(separators, StringSplitOptions.RemoveEmptyEntries);
+
+            List<RevitLinkType> links = new FilteredElementCollector(doc).OfClass(typeof(RevitLinkType)).Cast<RevitLinkType>().ToList();
+
+            foreach (Element e in links)
+            {
+                foreach (var word in words)
+                {
+                    if (e.Name == word)
+                    {
+                        flag = true;
+                    }
+                }
+
+                if (flag == true)
+                {
+                    flag = false;
+                }
+                else
+                {
+                    delta.Add(e);
+                }
+            }
+
+            foreach (RevitLinkType link in delta)
+            {
+                using (Transaction t = new Transaction(doc, "Delete RVT Link"))
+                {
+                    t.Start();
+                    doc.Delete(link.Id);
+                    i++;
+                    t.Commit();
+                }
+            }
+            TaskDialog.Show("Report", "Deleted " + i.ToString() + " rvt-link.");
+        }
+
+        //-----------------//
+        //---Version_2.0---//
+
+
         #region IExternalCommand Members Implementation
         public Autodesk.Revit.UI.Result Execute(ExternalCommandData revit,
                                              ref string message,
