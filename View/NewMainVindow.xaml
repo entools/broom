@@ -15,23 +15,72 @@
 
 
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="120"/>
-            <ColumnDefinition/>
-        </Grid.ColumnDefinitions>
-        <StackPanel>
-            <Button Style="{StaticResource GetButton}"
-                    Content="Delete parameters"/>
-            <Button Style="{StaticResource GetButton}"
-                    Content="Purge unused"/>
-            <Button Style="{StaticResource GetButton}"
-                    Content="Delete worksets"/>
-            <Button Style="{StaticResource GetButton}"
-                    Content="Delete view, legend, sheets"/>
-            <!--ETC-->
+        <TabControl>
+            <TabItem Header="First">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="50"/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition Height="50"/>
+                    </Grid.RowDefinitions>
+                    <DataGrid 
+                        Grid.Column="0"
+                        Margin="5"
+                        AutoGenerateColumns="False"
+                        CanUserAddRows="False"
+                        IsReadOnly="True"
+                        Background="White"
+                        ColumnHeaderStyle="{StaticResource HeaderStyle}"
+                        Style="{StaticResource DataGridStyle}"
+                        >
+
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Views"/>
+                        </DataGrid.Columns>
 
 
-        </StackPanel>
+                    </DataGrid>
+                    <StackPanel Grid.Column="1">
+                        <Button Style="{StaticResource GetButton}" Margin="3,50,3,0">
+                            <TextBlock>
+                                &gt;
+                                &gt;
+                            </TextBlock>
+                        </Button>
+                        <Button Style="{StaticResource GetButton}" Margin="3,10,3,0">
+                            <TextBlock>
+                                &lt;
+                                &lt;
+                            </TextBlock>
+                        </Button>
+
+                    </StackPanel>
+                    <DataGrid 
+                        Grid.Column="2"
+                        Margin="5"
+                        AutoGenerateColumns="False"
+                        CanUserAddRows="False"
+                        IsReadOnly="True"
+                        Background="White"
+                        ColumnHeaderStyle="{StaticResource HeaderStyle}"
+                        Style="{StaticResource DataGridStyle}"
+                        >
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Views"/>
+                        </DataGrid.Columns>
+
+
+                    </DataGrid>
+                    <Button Grid.Column="30" Grid.Row="1" Style="{StaticResource GetButton}" Content="PUSH ME"/>
+
+                </Grid>
+
+            </TabItem>
+        </TabControl>
     </Grid>
 
 </Window>

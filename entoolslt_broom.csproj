@@ -142,7 +142,9 @@
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="ViewModel\" />
+  </ItemGroup>
   <ItemGroup>
     <Resource Include="settings.ico">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
