@@ -13,16 +13,21 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Revit.View
+namespace Revit.SDK.Entools.Ribbon.CS.View
 {
     /// <summary>
     /// Логика взаимодействия для NewMainVindow.xaml
     /// </summary>
-    public partial class NewMainVindow : UserControl
+    public partial class NewMainVindow : Window, IDisposable
     {
         public NewMainVindow()
         {
             InitializeComponent();
+        }
+
+        public void Dispose()
+        {
+            throw new NotImplementedException();
         }
     }
 }
