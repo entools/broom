@@ -2,9 +2,11 @@
 using System.Windows.Input;
 using Autodesk.Revit.UI;
 using System.Text.RegularExpressions;
-using Revit.SDK.Entools.Ribbon.CS;
+using EntoolsBroom;
+using EntoolsBroom.Model;
+using EntoolsBroom.Properties;
 
-namespace Revit
+namespace EntoolsBroom.View
 {
     /// <summary>
     /// Логика взаимодействия для UserControl2.xaml
@@ -16,7 +18,7 @@ namespace Revit
         public UserControl2(ExternalCommandData revit)
         {
             InitializeComponent();
-            tbSettingText.Text = Revit.Properties.Settings.Default["names"].ToString();
+            tbSettingText.Text = Settings.Default["names"].ToString();
 
             //wins.Name = "txt";
             wins.ShowDialog();
@@ -38,8 +40,8 @@ namespace Revit
         private void Button_OK(object sender, RoutedEventArgs e)
         {
             com = true;
-            Revit.Properties.Settings.Default["names"] = tbSettingText.Text;
-            Revit.Properties.Settings.Default.Save();
+            Settings.Default["names"] = tbSettingText.Text;
+            Settings.Default.Save();
             wins.Close();
         }
 

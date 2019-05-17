@@ -1,6 +1,6 @@
 ﻿using Autodesk.Revit.UI;
 
-namespace Revit.SDK.Entools.Ribbon.CS
+namespace EntoolsBroom.Model
 {
     internal class SelectionManager
     {

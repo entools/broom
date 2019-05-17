@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Revit.SDK.Entools.Ribbon.CS.View
+namespace EntoolsBroom.View
 {
     /// <summary>
     /// Логика взаимодействия для NewMainVindow.xaml

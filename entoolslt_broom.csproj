@@ -87,8 +87,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AddInCommand.cs" />
-    <Compile Include="entoolsltbroom.cs" />
+    <Compile Include="Model\AddInCommand.cs" />
+    <Compile Include="Model\entoolsltbroom.cs" />
+    <Compile Include="Model\RevitModelClass.cs" />
+    <Compile Include="MVVM\ModelBase.cs" />
+    <Compile Include="MVVM\RelayCommand.cs" />
+    <Compile Include="Properties\Annotations.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -100,8 +104,8 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
-    <Compile Include="SelectionManager.cs" />
-    <Compile Include="Properties\SettingsWPF.xaml.cs">
+    <Compile Include="Model\SelectionManager.cs" />
+    <Compile Include="View\SettingsWPF.xaml.cs">
       <DependentUpon>SettingsWPF.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\NewMainVindow.xaml.cs">
@@ -124,11 +128,11 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Page Include="Properties\SettingsWPF.xaml">
+    <Page Include="View\SettingsWPF.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Properties\StyleButton.xaml">
+    <Page Include="View\StyleButton.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

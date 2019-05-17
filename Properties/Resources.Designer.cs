@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Revit.Properties {
+namespace EntoolsBroom.Properties {
     using System;
     
     
