@@ -20,7 +20,7 @@ namespace EntoolsBroom.Model
             {
                 // create customer Ribbon Items
                 RibbonPanel panel = application.CreateRibbonPanel("Broom");
-                PushButtonData list = new PushButtonData("Broom", "Broom", AddInPath, "Revit.SDK.Entools.Ribbon.CS.Broom")
+                PushButtonData list = new PushButtonData("Broom", "Broom", AddInPath, "EntoolsBroom.Model.Broom")
                 {
                     ToolTip = "Delete views and sheets"
                 };

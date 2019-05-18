@@ -4,7 +4,7 @@
     <Name>EnToolsLt</Name>
     <Assembly>entoolsltbroom.dll</Assembly>
     <ClientId>2fa79596-c3f9-4a87-93e7-a8b70b98a924</ClientId>
-    <FullClassName>Revit.SDK.Entools.Ribbon.CS.EnToolsLt</FullClassName>
+    <FullClassName>EntoolsBroom.Model.EnToolsLt</FullClassName>
     <VendorId>ADSK</VendorId>
     <VendorDescription>Autodesk, www.autodesk.com</VendorDescription>
   </AddIn>

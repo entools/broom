@@ -108,8 +108,8 @@
     <Compile Include="View\SettingsWPF.xaml.cs">
       <DependentUpon>SettingsWPF.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\NewMainVindow.xaml.cs">
-      <DependentUpon>NewMainVindow.xaml</DependentUpon>
+    <Compile Include="View\NewMainWindow.xaml.cs">
+      <DependentUpon>NewMainWindow.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -136,7 +136,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="View\NewMainVindow.xaml">
+    <Page Include="View\NewMainWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
