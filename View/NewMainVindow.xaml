@@ -9,7 +9,7 @@
         mc:Ignorable="d" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Height="400" Width="400" Title="ENTOOLS BROOM">
 
     <Window.Resources>
-        <ResourceDictionary Source="../Properties/StyleButton.xaml"></ResourceDictionary>
+        <ResourceDictionary Source="../View/StyleButton.xaml"></ResourceDictionary>
     </Window.Resources>
 
 
