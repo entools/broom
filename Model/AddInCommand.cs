@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using Autodesk.Revit.DB;
 using Autodesk.Revit.UI;
-using EntoolsBroom;
 using EntoolsBroom.View;
 
 namespace EntoolsBroom.Model
@@ -25,6 +24,49 @@ namespace EntoolsBroom.Model
             FilteredElementCollector collector = new FilteredElementCollector(doc);
             IList<Element> list = collector.WherePasses(filter).WhereElementIsNotElementType().ToElements();
             return list;
+        }
+
+
+        public void Cleaner(Document doc, List<ElementId> delta)
+        {
+            using (Transaction tx = new Transaction(doc))
+            {
+                tx.Start("Delete");
+                foreach (ElementId e in delta)
+                {
+                    try
+                    {
+                        doc.Delete(e);
+                    }
+                    catch// (Exception) // ex)
+                    {
+                        //TaskDialog.Show("Error", "Can not delet " + e.Name);
+                    }
+                }
+                tx.Commit();
+            }
+        }
+
+
+        public List<ElementId> Checker(string name, string[] words, ElementId id)
+        {
+            List<ElementId> delta = new List<ElementId>() { };
+            bool flag = false;
+
+            foreach (var word in words)
+            {
+                if (name == word)
+                {
+                    flag = true;
+                }
+            }
+
+            if (flag != true)
+            {
+                delta.Add(id);
+            }
+
+            return delta;
         }
 
 
@@ -127,7 +169,7 @@ namespace EntoolsBroom.Model
             Document doc = uidoc.Document;
  
             List<Element> views = new List<Element>() { };
-            List<Element> delta = new List<Element>() { };
+            List<ElementId> delta = new List<ElementId>() { };
 
             List<BuiltInCategory> cats = new List<BuiltInCategory>()
             {
@@ -142,52 +184,21 @@ namespace EntoolsBroom.Model
                 views.AddRange(elements.ToList());
             }
 
-            string names = EntoolsBroom.Properties.Settings.Default["names"].ToString();
-            int i = 0;
-            bool flag = false;
+            string names = EntoolsBroom.Properties.Settings.Default["names"].ToString();            
 
-            string[] separators = { "|" };//, " " };
+            string[] separators = { "|" };
             string[] words = names.Split(separators, StringSplitOptions.RemoveEmptyEntries);
 
             foreach (Element e in views)
             {
-                foreach (var word in words)
-                {
-                    if (e.Name == word)
-                    {
-                        flag = true;
-                    }
-                }
-
-                if (flag == true)
-                {
-                    flag = false;
-                }
-                else
-                {
-                    delta.Add(e);
-                }
+                string name = e.Name;
+                ElementId id= e.Id;
+                delta.AddRange(Checker(name,words, id));
             }
 
-            using (Transaction tx = new Transaction(doc))
-            {
-                tx.Start("Delete view");
-                foreach (Element e in delta)
-                {
-                    try
-                    {
-                        doc.Delete(e.Id);
-                        i++;
-                    }
-                    catch// (Exception) // ex)
-                    {
-                        //TaskDialog.Show("Error", "Can not delet " + e.Name);
-                    }
-                }                
-                tx.Commit();
-            }
+            Cleaner(doc, delta);
 
-            TaskDialog.Show("Report","Deleted " + i.ToString() + " views.");
+            TaskDialog.Show("Report","Deleted views.");
 
             //return Autodesk.Revit.UI.Result.Succeeded;
             //throw new NotImplementedException();
@@ -196,20 +207,43 @@ namespace EntoolsBroom.Model
         //---Version_2.0---//
         //-----------------//
 
-        public void DeleteImportsNotLinks(ExternalCommandData revit)
+
+        public void Delete_RVT_link(ExternalCommandData revit)
         {
             UIApplication uiapp = revit.Application;
             UIDocument uidoc = uiapp.ActiveUIDocument;
             Document doc = uidoc.Document;
 
-            //ist<Element> delta = new List<Element>() { };
+            List<ElementId> delta = new List<ElementId>() { };
 
-            //string names = Revit.Properties.Settings.Default["names_cad"].ToString();
-            //int i = 0;
-            //bool flag = false;
+            string names = EntoolsBroom.Properties.Settings.Default["names_rvt"].ToString();
 
-            //string[] separators = { "|" };
-            //string[] words = names.Split(separators, StringSplitOptions.RemoveEmptyEntries);
+            string[] separators = { "|" };
+            string[] words = names.Split(separators, StringSplitOptions.RemoveEmptyEntries);
+
+            List<RevitLinkType> links = new FilteredElementCollector(doc)
+                .OfClass(typeof(RevitLinkType))
+                .Cast<RevitLinkType>()
+                .ToList();
+
+            foreach (Element e in links)
+            {
+                string name = e.Name;
+                ElementId id = e.Id;
+                delta.AddRange(Checker(name, words, id));
+            }
+
+            Cleaner(doc, delta);
+
+            TaskDialog.Show("Report", "Deleted rvt-link.");
+        }
+
+
+        public void DeleteImportsNotLinks(ExternalCommandData revit)
+        {
+            UIApplication uiapp = revit.Application;
+            UIDocument uidoc = uiapp.ActiveUIDocument;
+            Document doc = uidoc.Document;
 
             IList<ElementId> categoryIds = new List<ElementId>();
 
@@ -230,57 +264,6 @@ namespace EntoolsBroom.Model
                 t.Commit();
             }
             TaskDialog.Show("Report", "Deleted CAD-link.");
-        }
-
-
-        public void Delete_RVT_link(ExternalCommandData revit)
-        {
-            UIApplication uiapp = revit.Application;
-            UIDocument uidoc = uiapp.ActiveUIDocument;
-            Document doc = uidoc.Document;
-
-            List<Element> delta = new List<Element>() { };
-
-            string names = EntoolsBroom.Properties.Settings.Default["names_rvt"].ToString();
-            int i = 0;
-            bool flag = false;
-
-            string[] separators = { "|" };
-            string[] words = names.Split(separators, StringSplitOptions.RemoveEmptyEntries);
-
-            List<RevitLinkType> links = new FilteredElementCollector(doc).OfClass(typeof(RevitLinkType)).Cast<RevitLinkType>().ToList();
-
-            foreach (Element e in links)
-            {
-                foreach (var word in words)
-                {
-                    if (e.Name == word)
-                    {
-                        flag = true;
-                    }
-                }
-
-                if (flag == true)
-                {
-                    flag = false;
-                }
-                else
-                {
-                    delta.Add(e);
-                }
-            }
-
-            foreach (RevitLinkType link in delta)
-            {
-                using (Transaction t = new Transaction(doc, "Delete RVT Link"))
-                {
-                    t.Start();
-                    doc.Delete(link.Id);
-                    i++;
-                    t.Commit();
-                }
-            }
-            TaskDialog.Show("Report", "Deleted " + i.ToString() + " rvt-link.");
         }
 
         //-----------------//
