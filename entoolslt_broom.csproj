@@ -91,6 +91,8 @@
     <Compile Include="Model\entoolsltbroom.cs" />
     <Compile Include="Model\RevitModelClass.cs" />
     <Compile Include="MVVM\ModelBase.cs" />
+    <Compile Include="MVVM\MoveItemToLeftCommand.cs" />
+    <Compile Include="MVVM\MoveItemToRightCommand.cs" />
     <Compile Include="MVVM\RelayCommand.cs" />
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="Properties\Resources.Designer.cs">

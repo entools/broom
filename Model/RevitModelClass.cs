@@ -9,7 +9,7 @@ using Application = Autodesk.Revit.ApplicationServices.Application;
 
 namespace Revit.Model
 {
-   public class RevitModelClass
+    public class RevitModelClass
     {
         #region Fields
         private static UIApplication _uiApplication;
@@ -40,6 +40,15 @@ namespace Revit.Model
                     else
                         tempCollection.Add(new CollectionClass { View = "Views not found" });
             return tempCollection;
+        }
+
+        public static void MoveRowToRightDataGrid(string getRowList, 
+            ObservableCollection<CollectionClass> viewsObservableCollectionLeft, 
+            ObservableCollection<CollectionClass> viewsObservableCollectionRight)
+        {
+            CollectionClass selectedRow = new CollectionClass{View = getRowList};
+            viewsObservableCollectionRight.Add(selectedRow);
+            viewsObservableCollectionLeft.Remove(selectedRow);
         }
         #endregion
     }

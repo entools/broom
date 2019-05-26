@@ -311,7 +311,8 @@ namespace EntoolsBroom.Model
             var doc = uidoc.Document;
 
             NewMainWindowViewModel newMainWindowViewModel = new NewMainWindowViewModel();
-            newMainWindowViewModel.ViewsObservableCollection = RevitModelClass.GetListViews(doc);
+            newMainWindowViewModel.ViewsObservableCollectionLeft = RevitModelClass.GetListViews(doc);
+            newMainWindowViewModel.ViewsObservableCollectionRight = new ObservableCollection<CollectionClass>();
             newMainWindowViewModel.RevitModel = new RevitModelClass(uiApplication);
 
             using (var view = new NewMainWindow())

@@ -6,10 +6,11 @@ using EntoolsBroom.ViewModel;
 
 namespace EntoolsBroom.ViewModel
 {
-    public class RelayCommand : ICommand
+    class MoveItemToLeftCommand : ICommand
     {
         readonly Action<object> _execute;
         readonly Predicate<object> _canExecute;
+        private readonly NewMainWindowViewModel _viewModel;
 
         public bool CanExecute(object parameter)
         {
@@ -18,7 +19,11 @@ namespace EntoolsBroom.ViewModel
 
         public void Execute(object parameter)
         {
-            _execute(parameter);
+            var selectedItem = _viewModel.GetCell;
+
+            _viewModel.ViewsObservableCollectionLeft.Add(selectedItem);
+            _viewModel.ViewsObservableCollectionRight.Remove(selectedItem);
+
         }
 
         public event EventHandler CanExecuteChanged
@@ -27,23 +32,11 @@ namespace EntoolsBroom.ViewModel
             remove { CommandManager.RequerySuggested -= value; }
         }
 
-
-        public RelayCommand(Action<object> execute): this(execute, null)
+        public MoveItemToLeftCommand(NewMainWindowViewModel viewModel)
         {
-
+            _viewModel = viewModel;
         }
 
-
-        private RelayCommand([CanBeNull] Action<object> execute, Predicate<object> canExecute)
-        {
-            if (execute == null)
-            {
-                throw new System.ArgumentNullException("execute//выполнить");
-            }
-
-            _execute = execute;
-            _canExecute = canExecute;
-        }
 
     }
 }

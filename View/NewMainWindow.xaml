@@ -32,9 +32,10 @@
                         <RowDefinition Height="50"/>
                     </Grid.RowDefinitions>
                     <DataGrid 
-                        ItemsSource="{Binding ViewsObservableCollection}"
+                        ItemsSource="{Binding ViewsObservableCollectionLeft}"
                         AutoGenerateColumns="False"
                         CanUserAddRows="False"
+                        CanUserDeleteRows="True"
                         SelectedItem="{Binding GetCell, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                         IsReadOnly="True"
                         Margin="5"
@@ -42,7 +43,6 @@
                         ColumnHeaderStyle="{StaticResource HeaderStyle}"
                         Style="{StaticResource DataGridStyle}"
                         >
-
                         <DataGrid.Columns>
                             <DataGridTextColumn  Header="VIEWS" Binding="{Binding View}"/>
                         </DataGrid.Columns>
@@ -50,13 +50,14 @@
 
                     </DataGrid>
                     <StackPanel Grid.Column="1">
-                        <Button Style="{StaticResource GetButton}" Margin="3,50,3,0">
+                        <Button Style="{StaticResource GetButton}" Margin="3,50,3,0" Command="{Binding MoveToRightCommand}">
                             <TextBlock>
                                 &gt;
                                 &gt;
                             </TextBlock>
+                            
                         </Button>
-                        <Button Style="{StaticResource GetButton}" Margin="3,10,3,0">
+                        <Button Style="{StaticResource GetButton}" Margin="3,10,3,0" Command="{Binding MoveToLeftCommand}">
                             <TextBlock>
                                 &lt;
                                 &lt;
@@ -66,16 +67,18 @@
                     </StackPanel>
                     <DataGrid 
                         Grid.Column="2"
-                        Margin="5"
+                        ItemsSource="{Binding ViewsObservableCollectionRight}"
                         AutoGenerateColumns="False"
                         CanUserAddRows="False"
+                        SelectedItem="{Binding GetCell, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                         IsReadOnly="True"
+                        Margin="5"
                         Background="White"
                         ColumnHeaderStyle="{StaticResource HeaderStyle}"
                         Style="{StaticResource DataGridStyle}"
-                        >
+                    >
                         <DataGrid.Columns>
-                            <DataGridTextColumn Header="VIEWS"/>
+                            <DataGridTextColumn  Header="VIEWS" Binding="{Binding View}"/>
                         </DataGrid.Columns>
 
 
