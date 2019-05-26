@@ -8,7 +8,7 @@
     <ProjectGuid>{4E18C36C-1D14-4DF2-B68E-E7D46D425A8B}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Revit</RootNamespace>
+    <RootNamespace>EntoolsBroom</RootNamespace>
     <AssemblyName>entoolsltbroom</AssemblyName>
     <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -40,11 +40,11 @@
     </Reference>
     <Reference Include="PresentationFramework" />
     <Reference Include="RevitAPI">
-      <HintPath>..\..\..\..\..\Program Files\Autodesk\Revit 2019\RevitAPI.dll</HintPath>
+      <HintPath>C:\Program Files\Autodesk\Revit 2018\RevitAPI.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="RevitAPIUI">
-      <HintPath>..\..\..\..\..\Program Files\Autodesk\Revit 2019\RevitAPIUI.dll</HintPath>
+      <HintPath>C:\Program Files\Autodesk\Revit 2018\RevitAPIUI.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="System">
@@ -105,6 +105,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
     <Compile Include="Model\SelectionManager.cs" />
+    <Compile Include="ViewModel\NewMainWindowViewModel.cs" />
     <Compile Include="View\SettingsWPF.xaml.cs">
       <DependentUpon>SettingsWPF.xaml</DependentUpon>
     </Compile>
@@ -146,9 +147,7 @@
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="ViewModel\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Resource Include="settings.ico">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

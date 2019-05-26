@@ -56,7 +56,7 @@ namespace EntoolsBroom.Annotations
 
   /// <summary>
   /// Indicates that the marked method builds string by format pattern and (optional) arguments.
-  /// Parameter, which contains format string, should be given in constructor. The format string
+  /// View, which contains format string, should be given in constructor. The format string
   /// should be in <see cref="string.Format(IFormatProvider,string,object[])"/>-like form.
   /// </summary>
   /// <example><code>

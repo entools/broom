@@ -18,16 +18,17 @@ namespace EntoolsBroom.View
     /// <summary>
     /// Логика взаимодействия для NewMainVindow.xaml
     /// </summary>
-    public partial class NewMainVindow : Window, IDisposable
+    public partial class NewMainWindow : Window, IDisposable
     {
-        public NewMainVindow()
+        public NewMainWindow()
         {
             InitializeComponent();
         }
 
         public void Dispose()
         {
-            throw new NotImplementedException();
+            //Dispose();
+            //GC.SuppressFinalize(this);
         }
     }
 }

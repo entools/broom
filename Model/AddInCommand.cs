@@ -1,9 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using Autodesk.Revit.DB;
 using Autodesk.Revit.UI;
 using EntoolsBroom.View;
+using EntoolsBroom.ViewModel;
+using Revit.Model;
 
 namespace EntoolsBroom.Model
 {
@@ -123,13 +126,13 @@ namespace EntoolsBroom.Model
                 td.Title = "Report";
                 //td.MainInstruction = "View's name:";
                 td.MainContent = "View's name:\n"
-                    + report_warning 
+                    + report_warning
                     + "do not exist in the project."
                     + "Do you want to continue?"
                     ;
 
-                td.CommonButtons = 
-                    TaskDialogCommonButtons.No | 
+                td.CommonButtons =
+                    TaskDialogCommonButtons.No |
                     TaskDialogCommonButtons.Yes;
 
                 TaskDialogResult taskDialogResult = td.Show();
@@ -167,7 +170,7 @@ namespace EntoolsBroom.Model
             UIApplication uiapp = revit.Application;
             UIDocument uidoc = uiapp.ActiveUIDocument;
             Document doc = uidoc.Document;
- 
+
             List<Element> views = new List<Element>() { };
             List<ElementId> delta = new List<ElementId>() { };
 
@@ -184,7 +187,7 @@ namespace EntoolsBroom.Model
                 views.AddRange(elements.ToList());
             }
 
-            string names = EntoolsBroom.Properties.Settings.Default["names"].ToString();            
+            string names = EntoolsBroom.Properties.Settings.Default["names"].ToString();
 
             string[] separators = { "|" };
             string[] words = names.Split(separators, StringSplitOptions.RemoveEmptyEntries);
@@ -192,13 +195,13 @@ namespace EntoolsBroom.Model
             foreach (Element e in views)
             {
                 string name = e.Name;
-                ElementId id= e.Id;
-                delta.AddRange(Checker(name,words, id));
+                ElementId id = e.Id;
+                delta.AddRange(Checker(name, words, id));
             }
 
             Cleaner(doc, delta);
 
-            TaskDialog.Show("Report","Deleted views.");
+            TaskDialog.Show("Report", "Deleted views.");
 
             //return Autodesk.Revit.UI.Result.Succeeded;
             //throw new NotImplementedException();
@@ -270,27 +273,54 @@ namespace EntoolsBroom.Model
         //---Version_2.0---//
 
 
-        #region IExternalCommand Members Implementation
-        public Autodesk.Revit.UI.Result Execute(ExternalCommandData revit,
-                                             ref string message,
-                                             ElementSet elements)
-        {
-            try
-            {
-                SelectionManager manager = new SelectionManager(revit);               
-                UserControl2 userControl = new UserControl2(revit);
+        //#region IExternalCommand Members Implementation
+        //public Autodesk.Revit.UI.Result Execute(ExternalCommandData revit,
+        //                                     ref string message,
+        //                                     ElementSet elements)
+        //{
+        //    try
+        //    {
+        //        SelectionManager manager = new SelectionManager(revit);               
+        //        UserControl2 userControl = new UserControl2(revit);
 
-                return Autodesk.Revit.UI.Result.Succeeded;
-            }
-            catch (Exception ex)
+        //        return Autodesk.Revit.UI.Result.Succeeded;
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        // If any error, give error information and return failed
+        //        message = ex.Message;
+        //        return Autodesk.Revit.UI.Result.Failed;
+        //    }
+        //    //return Autodesk.Revit.UI.Result.Succeeded;
+        //    throw new NotImplementedException();
+        //}
+        //#endregion IExternalCommand Members Implementation
+
+        /// <summary>
+        /// Запуск нового окна и отображение параметров. Пока сделал так
+        /// </summary>
+        /// <param name="commandData"></param>
+        /// <param name="message"></param>
+        /// <param name="elements"></param>
+        /// <returns></returns>
+        public Result Execute(ExternalCommandData commandData, ref string message, ElementSet elements)
+        {
+            var uiApplication = commandData.Application;
+            var uidoc = uiApplication.ActiveUIDocument;
+            var app = uiApplication.Application;
+            var doc = uidoc.Document;
+
+            NewMainWindowViewModel newMainWindowViewModel = new NewMainWindowViewModel();
+            newMainWindowViewModel.ViewsObservableCollection = RevitModelClass.GetListViews(doc);
+            newMainWindowViewModel.RevitModel = new RevitModelClass(uiApplication);
+
+            using (var view = new NewMainWindow())
             {
-                // If any error, give error information and return failed
-                message = ex.Message;
-                return Autodesk.Revit.UI.Result.Failed;
+                view.DataContext = newMainWindowViewModel;
+                view.ShowDialog();
+                return Result.Succeeded;
             }
-            //return Autodesk.Revit.UI.Result.Succeeded;
-            throw new NotImplementedException();
+
         }
-        #endregion IExternalCommand Members Implementation
     }
 }
