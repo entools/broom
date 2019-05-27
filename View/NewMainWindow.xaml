@@ -83,7 +83,7 @@
 
 
                     </DataGrid>
-                    <Button Grid.Column="30" Grid.Row="1" Style="{StaticResource GetButton}" Content="PUSH ME"/>
+                    <Button Grid.Column="30" Grid.Row="1" Style="{StaticResource GetButton}" Content="PUSH ME" Click="ButtonBase_OnClick" Command="{Binding PushCommand}"/>
 
                 </Grid>
 

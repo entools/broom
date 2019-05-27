@@ -41,14 +41,18 @@ namespace Revit.Model
                         tempCollection.Add(new CollectionClass { View = "Views not found" });
             return tempCollection;
         }
-
-        public static void MoveRowToRightDataGrid(string getRowList, 
-            ObservableCollection<CollectionClass> viewsObservableCollectionLeft, 
-            ObservableCollection<CollectionClass> viewsObservableCollectionRight)
+        /// <summary>
+        /// Показать список выдов из правой датагрид
+        /// </summary>
+        public static void ShowSelectedView(ObservableCollection<CollectionClass> ViewsObservableCollectionRight)
         {
-            CollectionClass selectedRow = new CollectionClass{View = getRowList};
-            viewsObservableCollectionRight.Add(selectedRow);
-            viewsObservableCollectionLeft.Remove(selectedRow);
+            string gg = null;
+            for (int i = 0; i < ViewsObservableCollectionRight.Count; i++)
+            {
+                gg += ViewsObservableCollectionRight[i].View + "\n";
+            }
+
+            TaskDialog.Show("ShowMe", gg);
         }
         #endregion
     }

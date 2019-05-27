@@ -35,6 +35,15 @@ namespace EntoolsBroom.ViewModel
                 return _moveToLeftCommand;
             }
         }
+        public ICommand PushCommand
+        {
+            get
+            {
+                if (_pushCommand == null)
+                    _pushCommand = new RelayCommand(o=> RevitModelClass.ShowSelectedView(ViewsObservableCollectionRight));
+                return _pushCommand;
+            }
+        }
 
         #endregion
 
@@ -46,6 +55,7 @@ namespace EntoolsBroom.ViewModel
         private ObservableCollection<CollectionClass> _viewsObservableCollectionRight;
         private ICommand _moveToRightCommand;
         private ICommand _moveToLeftCommand;
+        private ICommand _pushCommand;
         private CollectionClass _getCell;
 
         #endregion

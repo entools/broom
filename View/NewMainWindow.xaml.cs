@@ -30,5 +30,10 @@ namespace EntoolsBroom.View
             //Dispose();
             //GC.SuppressFinalize(this);
         }
+
+        private void ButtonBase_OnClick(object sender, RoutedEventArgs e)
+        {
+            Close();
+        }
     }
 }
