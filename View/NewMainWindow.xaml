@@ -50,14 +50,18 @@
 
                     </DataGrid>
                     <StackPanel Grid.Column="1">
-                        <Button Style="{StaticResource GetButton}" Margin="3,50,3,0" Command="{Binding MoveToRightCommand}">
+                        <Button Style="{StaticResource GetButton}" 
+                                Margin="3,50,3,0" 
+                                Command="{Binding MoveToRightCommand}">
                             <TextBlock>
                                 &gt;
                                 &gt;
                             </TextBlock>
                             
                         </Button>
-                        <Button Style="{StaticResource GetButton}" Margin="3,10,3,0" Command="{Binding MoveToLeftCommand}">
+                        <Button Style="{StaticResource GetButton}" 
+                                Margin="3,10,3,0" 
+                                Command="{Binding MoveToLeftCommand}">
                             <TextBlock>
                                 &lt;
                                 &lt;
@@ -83,7 +87,12 @@
 
 
                     </DataGrid>
-                    <Button Grid.Column="30" Grid.Row="1" Style="{StaticResource GetButton}" Content="PUSH ME" Click="ButtonBase_OnClick" Command="{Binding PushCommand}"/>
+                    <Button Grid.Column="30" 
+                            Grid.Row="1" 
+                            Style="{StaticResource GetButton}" 
+                            Content="PUSH ME" 
+                            Click="ButtonBase_OnClick" 
+                            Command="{Binding PushCommand}"/>
 
                 </Grid>
 

@@ -12,6 +12,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Autodesk.Revit.DB;
+using Autodesk.Revit.UI;
+using EntoolsBroom.Model;
 
 namespace EntoolsBroom.View
 {
@@ -33,7 +36,9 @@ namespace EntoolsBroom.View
 
         private void ButtonBase_OnClick(object sender, RoutedEventArgs e)
         {
+            
             Close();
+
         }
     }
 }
