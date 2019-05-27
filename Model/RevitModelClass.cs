@@ -1,13 +1,13 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using Autodesk.Revit.DB;
 using Autodesk.Revit.UI;
 using EntoolsBroom.ViewModel;
 using Application = Autodesk.Revit.ApplicationServices.Application;
+using EntoolsBroom.Model;
 
-namespace Revit.Model
+namespace EntoolsBroomRevit.Model
 {
     public class RevitModelClass
     {
@@ -46,13 +46,20 @@ namespace Revit.Model
         /// </summary>
         public static void ShowSelectedView(ObservableCollection<CollectionClass> ViewsObservableCollectionRight)
         {
-            string gg = null;
+            string name = null;
+
             for (int i = 0; i < ViewsObservableCollectionRight.Count; i++)
             {
-                gg += ViewsObservableCollectionRight[i].View + "\n";
+                name += ViewsObservableCollectionRight[i].View + "\n";
             }
 
-            TaskDialog.Show("ShowMe", gg);
+
+            EntoolsBroom.Properties.Settings.Default["names_"] = name;
+            EntoolsBroom.Properties.Settings.Default.Save();
+
+            Broom broom = new Broom();
+            broom.DelView(_document, name);
+
         }
         #endregion
     }

@@ -6,7 +6,7 @@ using Autodesk.Revit.DB;
 using Autodesk.Revit.UI;
 using EntoolsBroom.View;
 using EntoolsBroom.ViewModel;
-using Revit.Model;
+using EntoolsBroomRevit.Model;
 
 namespace EntoolsBroom.Model
 {
@@ -56,8 +56,12 @@ namespace EntoolsBroom.Model
             List<ElementId> delta = new List<ElementId>() { };
             bool flag = false;
 
+            //TaskDialog.Show("m", words[0].ToString());
+
             foreach (var word in words)
             {
+                //TaskDialog.Show("m", word);
+
                 if (name == word)
                 {
                     flag = true;
@@ -94,9 +98,9 @@ namespace EntoolsBroom.Model
                 views.AddRange(elements.ToList());
             }
 
-            string names = EntoolsBroom.Properties.Settings.Default["names"].ToString();
+            string names = Properties.Settings.Default["names_"].ToString();
 
-            string[] separators = { "|" };
+            string[] separators = { "\n" };
             string[] words = names.Split(separators, StringSplitOptions.RemoveEmptyEntries);
 
             string report_warning = "";
@@ -144,7 +148,7 @@ namespace EntoolsBroom.Model
             }
             if (dialog == true)
             {
-                DelView(revit);
+                //DelView(revit);
             }
 
             //---Version_2.0---//
@@ -152,12 +156,12 @@ namespace EntoolsBroom.Model
 
             if (1 == 0)
             {
-                Delete_RVT_link(revit);
+                //Delete_RVT_link(revit);
             }
 
             if (1 == 0)
             {
-                DeleteImportsNotLinks(revit);
+                //DeleteImportsNotLinks(revit);
             }
 
             //-----------------//
@@ -165,12 +169,8 @@ namespace EntoolsBroom.Model
         }
 
 
-        public void DelView(ExternalCommandData revit)
+        public void DelView(Document doc, string names)
         {
-            UIApplication uiapp = revit.Application;
-            UIDocument uidoc = uiapp.ActiveUIDocument;
-            Document doc = uidoc.Document;
-
             List<Element> views = new List<Element>() { };
             List<ElementId> delta = new List<ElementId>() { };
 
@@ -187,10 +187,8 @@ namespace EntoolsBroom.Model
                 views.AddRange(elements.ToList());
             }
 
-            string names = EntoolsBroom.Properties.Settings.Default["names"].ToString();
-
-            string[] separators = { "|" };
-            string[] words = names.Split(separators, StringSplitOptions.RemoveEmptyEntries);
+            string[] separators = { "\n" };
+            string[] words = names.Split(separators, StringSplitOptions.RemoveEmptyEntries);          
 
             foreach (Element e in views)
             {
@@ -221,7 +219,7 @@ namespace EntoolsBroom.Model
 
             string names = EntoolsBroom.Properties.Settings.Default["names_rvt"].ToString();
 
-            string[] separators = { "|" };
+            string[] separators = { "\n" };
             string[] words = names.Split(separators, StringSplitOptions.RemoveEmptyEntries);
 
             List<RevitLinkType> links = new FilteredElementCollector(doc)
@@ -303,7 +301,11 @@ namespace EntoolsBroom.Model
         /// <param name="message"></param>
         /// <param name="elements"></param>
         /// <returns></returns>
-        public Result Execute(ExternalCommandData commandData, ref string message, ElementSet elements)
+        /// 
+
+        public Result Execute(ExternalCommandData commandData,
+            ref string message, 
+            ElementSet elements)
         {
             var uiApplication = commandData.Application;
             var uidoc = uiApplication.ActiveUIDocument;
