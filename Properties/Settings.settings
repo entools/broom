@@ -1,8 +1,8 @@
 ﻿<?xml version='1.0' encoding='utf-8'?>
-<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Revit.Properties" GeneratedClassName="Settings">
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="EntoolsBroom.Properties" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
-    <Setting Name="names" Type="System.String" Scope="User">
+    <Setting Name="names_" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
     <Setting Name="names_rvt" Type="System.String" Scope="User">
