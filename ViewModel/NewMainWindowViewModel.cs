@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
-using Revit.Model;
+using EntoolsBroomRevit.Model;
 
 namespace EntoolsBroom.ViewModel
 {
@@ -86,6 +86,7 @@ namespace EntoolsBroom.ViewModel
             }
         }
 
+
         public ObservableCollection<CollectionClass> ViewsObservableCollectionRight
         {
             get => _viewsObservableCollectionRight;
@@ -98,6 +99,8 @@ namespace EntoolsBroom.ViewModel
         #endregion
 
     }
+    
+
     public class CollectionClass
     {
         public string View { get; set; }
