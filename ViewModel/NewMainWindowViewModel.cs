@@ -58,6 +58,10 @@ namespace EntoolsBroom.ViewModel
         private ICommand _pushCommand;
         private CollectionClass _getCell;
 
+        private bool _delRvtLinks;
+        private bool _delCadLinks;
+        private bool _delCadImports;
+
         #endregion
 
         #region Propierties
@@ -96,10 +100,47 @@ namespace EntoolsBroom.ViewModel
                 OnPropertyChanged();
             }
         }
+
+        public bool DelRvtLinks
+        {
+            get => _delRvtLinks;
+            set
+            {
+                _delRvtLinks = value;
+                OnPropertyChanged();
+
+
+            }
+        }
+        public bool DelCadLinks
+        {
+            get => _delCadLinks;
+            set
+            {
+                _delCadLinks = value;
+                OnPropertyChanged();
+
+
+            }
+        }
+        public bool DelCadImports
+        {
+            get => _delCadImports;
+            set
+            {
+                _delCadImports = value;
+                OnPropertyChanged();
+
+
+            }
+        }
+
+
+
         #endregion
 
     }
-    
+
 
     public class CollectionClass
     {

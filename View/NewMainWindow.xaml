@@ -20,7 +20,7 @@
 
     <Grid>
         <TabControl>
-            <TabItem Header="First">
+            <TabItem Header="MAIN">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition/>
@@ -57,7 +57,7 @@
                                 &gt;
                                 &gt;
                             </TextBlock>
-                            
+
                         </Button>
                         <Button Style="{StaticResource GetButton}" 
                                 Margin="3,10,3,0" 
@@ -96,6 +96,36 @@
 
                 </Grid>
 
+            </TabItem>
+
+            <TabItem Header="SETTINGS">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="50"/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition Height="50"/>
+                    </Grid.RowDefinitions>
+
+                    <StackPanel >
+                        <GroupBox Header="SELECT ADVANCED PARAMETERS" Margin="10,10,0,0" BorderThickness="0,1,0,0"/>
+
+                        <CheckBox HorizontalAlignment="Left" Content="DELETE RVT LINKS   " Margin="10,10,0,0" Style="{StaticResource CheckBoxStyle1}" IsChecked="{Binding DelRvtLinks}"/>
+                        <CheckBox HorizontalAlignment="Left" Content="DELETE CAD LINKS   " Margin="10,10,0,0" Style="{StaticResource CheckBoxStyle1}" IsChecked="{Binding DelCadLinks}"/>
+                        <CheckBox HorizontalAlignment="Left" Content="DELETE CAD IMPORTS   " Margin="10,10,0,0" Style="{StaticResource CheckBoxStyle1}" IsChecked="{Binding DelCadImports}"/>
+
+                    </StackPanel>
+                    <Button Grid.Column="2" 
+                            Grid.Row="1" 
+                            Style="{StaticResource GetButton}" 
+                            Content="PUSH ME" 
+                            Click="ButtonBase_OnClick" 
+                            Command="{Binding PushCommand}"/>
+
+                </Grid>
             </TabItem>
         </TabControl>
     </Grid>

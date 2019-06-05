@@ -19,11 +19,12 @@ namespace EntoolsBroom.ViewModel
 
         public void Execute(object parameter)
         {
-            var selectedItem = _viewModel.GetCell;
-
-            _viewModel.ViewsObservableCollectionRight.Add(selectedItem);
-
-            _viewModel.ViewsObservableCollectionLeft.Remove(selectedItem);
+            if (_viewModel.GetCell != null)
+            {
+                var selectedItem = _viewModel.GetCell;
+                _viewModel.ViewsObservableCollectionRight.Add(selectedItem);
+                _viewModel.ViewsObservableCollectionLeft.Remove(selectedItem);
+            }
         }
 
         public event EventHandler CanExecuteChanged
