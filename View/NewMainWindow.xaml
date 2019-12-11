@@ -6,129 +6,172 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
         xmlns:local="clr-namespace:EntoolsBroom.ViewModel"
         Icon="../settings.ico"
-        mc:Ignorable="d" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Height="600" Width="600" Title="ENTOOLS BROOM">
+        mc:Ignorable="d" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Height="800" Width="600"
+        xmlns:dragablz="clr-namespace:Dragablz;assembly=Dragablz"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+         TextElement.FontWeight="Regular"
+         TextElement.FontSize="13"
+         TextOptions.TextFormattingMode="Ideal"
+         TextOptions.TextRenderingMode="Auto"
+         Background="{DynamicResource MaterialDesignPaper}"
+         FontFamily="{DynamicResource MaterialDesignFont}" WindowStyle="None">
 
-    <Window.Resources>
-        <ResourceDictionary Source="../View/StyleButton.xaml"></ResourceDictionary>
+    <Window.Resources >
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary>
+                    <ResourceDictionary.MergedDictionaries>
+                        <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Light.xaml" />
+                        <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />
+                        <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.Blue.xaml" />
+                        <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Accent/MaterialDesignColor.Purple.xaml" />
+
+                    </ResourceDictionary.MergedDictionaries>
+
+                    <SolidColorBrush x:Key="PrimaryHueLightBrush" Color="{StaticResource Primary200Foreground}"/>
+                    <SolidColorBrush x:Key="PrimaryHueLightForegroundBrush" Color="{StaticResource Primary200 }"/>
+                    <!--<SolidColorBrush x:Key="PrimaryHueMidBrush" Color="White"/>
+                    <SolidColorBrush x:Key="PrimaryHueMidForegroundBrush" Color="{StaticResource Primary500 }"/>-->
+                    <!--<SolidColorBrush x:Key="PrimaryHueDarkBrush" Color="{StaticResource Primary200}"/>
+                    <SolidColorBrush x:Key="PrimaryHueDarkForegroundBrush" Color="{StaticResource Accent200Foreground}"/>-->
+
+
+                </ResourceDictionary>
+                <!-- secondary colour -->
+                <ResourceDictionary>
+                    <!-- include your secondary pallette -->
+                    <ResourceDictionary.MergedDictionaries>
+                        <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/MaterialDesignColor.Blue.xaml" />
+                    </ResourceDictionary.MergedDictionaries>
+
+                    <!-- include a single secondary accent color (and the associated forecolour) -->
+                    <SolidColorBrush x:Key="SecondaryAccentBrush" Color="{StaticResource Accent200}"/>
+                    <SolidColorBrush x:Key="SecondaryAccentForegroundBrush" Color="{StaticResource Accent200Foreground}"/>
+                </ResourceDictionary>
+
+                <!-- Include the Dragablz Material Design style -->
+                <ResourceDictionary Source="pack://application:,,,/Dragablz;component/Themes/materialdesign.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+            <Style TargetType="{x:Type dragablz:TabablzControl}" BasedOn="{StaticResource MaterialDesignTabablzControlStyle}" />
+
+        </ResourceDictionary>
     </Window.Resources>
 
     <Window.DataContext>
         <local:NewMainWindowViewModel/>
     </Window.DataContext>
+    <Border BorderBrush="#2196f3" BorderThickness="1">
 
+        <Grid Background="White" >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="25"/>
+                <RowDefinition/>
+                <RowDefinition Height="50"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <!--Пользовательсий заголовок с кнопкой закрыть и названием-->
+            <Grid Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Background="#2196f3" MouseLeftButtonDown="layoutRoot_MouseLeftButtonDown">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="25"/>
+                </Grid.ColumnDefinitions>
+                <Button Grid.Column="1" IsCancel="True" VerticalAlignment="Center" HorizontalContentAlignment="Center">
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Border x:Name="Bd" Background="Transparent">
+                                <Path x:Name="Pt" Data="M0,0 M0.2,0.2 L 0.8,0.8 M0.2,0.8 L0.8,0.2 M1,1"
+                                              Stretch="Uniform" Stroke="White" StrokeThickness="2"/>
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter TargetName="Bd" Property="Background" Value="Red"/>
+                                    <Setter TargetName="Pt" Property="Stroke" Value="White"/>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Button.Template>
 
-
-    <Grid>
-        <TabControl>
-            <TabItem Header="MAIN">
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition/>
-                        <ColumnDefinition Width="50"/>
-                        <ColumnDefinition/>
-                    </Grid.ColumnDefinitions>
-                    <Grid.RowDefinitions>
-                        <RowDefinition/>
-                        <RowDefinition Height="50"/>
-                    </Grid.RowDefinitions>
-                    <DataGrid 
+                </Button>
+                <TextBlock Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" FontSize="17" Foreground="White" Text=" ENTOOLS BROOM"/>
+            </Grid>
+            <dragablz:TabablzControl Grid.Row="1">
+                <dragablz:TabablzControl.InterTabController>
+                    <dragablz:InterTabController/>
+                </dragablz:TabablzControl.InterTabController>
+                <TabItem Header="MAIN">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition Width="60"/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <DataGrid 
                         ItemsSource="{Binding ViewsObservableCollectionLeft}"
+                        AutoGenerateColumns="False"
+                        CanUserAddRows="False"
+                        SelectedItem="{Binding GetCell, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                        IsReadOnly="True"
+                        Margin="5"
+                        Background="White">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn  Header="VIEWS" Binding="{Binding View}"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
+
+                        <StackPanel Grid.Column="1">
+                            <Button Margin="3,50,3,0" 
+                                Command="{Binding MoveToRightCommand}">
+                                <TextBlock>&gt;&gt;</TextBlock>
+
+                            </Button>
+                            <Button Margin="3,10,3,0" 
+                                Command="{Binding MoveToLeftCommand}">
+                                <TextBlock>&lt;&lt;</TextBlock>
+                            </Button>
+                        </StackPanel>
+
+                        <DataGrid  Grid.Column="2"
+                        ItemsSource="{Binding ViewsObservableCollectionRight}"
                         AutoGenerateColumns="False"
                         CanUserAddRows="False"
                         CanUserDeleteRows="True"
                         SelectedItem="{Binding GetCell, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                         IsReadOnly="True"
                         Margin="5"
-                        Background="White"
-                        ColumnHeaderStyle="{StaticResource HeaderStyle}"
-                        Style="{StaticResource DataGridStyle}"
-                        >
-                        <DataGrid.Columns>
-                            <DataGridTextColumn  Header="VIEWS" Binding="{Binding View}"/>
-                        </DataGrid.Columns>
+                        Background="White">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn  Header="VIEWS" Binding="{Binding View}"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </Grid>
+                </TabItem>
 
-
-                    </DataGrid>
-                    <StackPanel Grid.Column="1">
-                        <Button Style="{StaticResource GetButton}" 
-                                Margin="3,50,3,0" 
-                                Command="{Binding MoveToRightCommand}">
-                            <TextBlock>
-                                &gt;
-                                &gt;
-                            </TextBlock>
-
-                        </Button>
-                        <Button Style="{StaticResource GetButton}" 
-                                Margin="3,10,3,0" 
-                                Command="{Binding MoveToLeftCommand}">
-                            <TextBlock>
-                                &lt;
-                                &lt;
-                            </TextBlock>
-                        </Button>
-
-                    </StackPanel>
-                    <DataGrid 
-                        Grid.Column="2"
-                        ItemsSource="{Binding ViewsObservableCollectionRight}"
-                        AutoGenerateColumns="False"
-                        CanUserAddRows="False"
-                        SelectedItem="{Binding GetCell, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                        IsReadOnly="True"
-                        Margin="5"
-                        Background="White"
-                        ColumnHeaderStyle="{StaticResource HeaderStyle}"
-                        Style="{StaticResource DataGridStyle}"
-                    >
-                        <DataGrid.Columns>
-                            <DataGridTextColumn  Header="VIEWS" Binding="{Binding View}"/>
-                        </DataGrid.Columns>
-
-
-                    </DataGrid>
-                    <Button Grid.Column="30" 
-                            Grid.Row="1" 
-                            Style="{StaticResource GetButton}" 
-                            Content="PUSH ME" 
-                            Click="ButtonBase_OnClick" 
-                            Command="{Binding PushCommand}"/>
-
-                </Grid>
-
-            </TabItem>
-
-            <TabItem Header="SETTINGS">
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition/>
-                        <ColumnDefinition Width="50"/>
-                        <ColumnDefinition/>
-                    </Grid.ColumnDefinitions>
-                    <Grid.RowDefinitions>
-                        <RowDefinition/>
-                        <RowDefinition Height="50"/>
-                    </Grid.RowDefinitions>
-
+                <TabItem Header="SETTINGS">
                     <StackPanel >
                         <GroupBox Header="SELECT ADVANCED PARAMETERS" Margin="10,10,0,0" BorderThickness="0,1,0,0"/>
-
-                        <CheckBox HorizontalAlignment="Left" Content="DELETE RVT LINKS   " Margin="10,10,0,0" Style="{StaticResource CheckBoxStyle1}" IsChecked="{Binding DelRvtLinks}"/>
-                        <CheckBox HorizontalAlignment="Left" Content="DELETE CAD LINKS   " Margin="10,10,0,0" Style="{StaticResource CheckBoxStyle1}" IsChecked="{Binding DelCadLinks}"/>
-                        <CheckBox HorizontalAlignment="Left" Content="DELETE CAD IMPORTS   " Margin="10,10,0,0" Style="{StaticResource CheckBoxStyle1}" IsChecked="{Binding DelCadImports}"/>
+                        <CheckBox HorizontalAlignment="Left" Content="DELETE RVT LINKS" Margin="10,10,0,0" IsChecked="{Binding DelRvtLinks}"/>
+                        <CheckBox HorizontalAlignment="Left" Content="DELETE CAD LINKS" Margin="10,10,0,0" IsChecked="{Binding DelCadLinks}"/>
+                        <CheckBox HorizontalAlignment="Left" Content="DELETE CAD IMPORTS" Margin="10,10,0,0" IsChecked="{Binding DelCadImports}"/>
 
                     </StackPanel>
-                    <Button Grid.Column="2" 
-                            Grid.Row="1" 
-                            Style="{StaticResource GetButton}" 
-                            Content="PUSH ME" 
-                            Click="ButtonBase_OnClick" 
-                            Command="{Binding PushCommand}"/>
+                </TabItem>
+            </dragablz:TabablzControl>
+            <Grid Grid.Row="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="10"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Button  Content="OK" Click="ButtonBase_OnClick" Command="{Binding PushCommand}"/>
+                <Button Grid.Column="2" Content="CANCEL" IsCancel="True"/>
+            </Grid>
+        </Grid>
+    </Border>
 
-                </Grid>
-            </TabItem>
-        </TabControl>
-    </Grid>
+
 
 </Window>
 
