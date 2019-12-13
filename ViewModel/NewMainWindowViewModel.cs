@@ -1,13 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using EntoolsBroomRevit.Model;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Input;
-using EntoolsBroomRevit.Model;
 
 namespace EntoolsBroom.ViewModel
 {
@@ -39,9 +32,17 @@ namespace EntoolsBroom.ViewModel
         {
             get
             {
-                if (_pushCommand == null)
-                    _pushCommand = new RelayCommand(o=> RevitModelClass.ShowSelectedView(ViewsObservableCollectionRight));
-                return _pushCommand;
+                return _pushCommand ?? (_pushCommand = new RelayCommand(o =>
+                    {
+                        try
+                        {
+                            RevitModelClass.ShowSelectedView(ViewsObservableCollectionRight);
+                        }
+                        catch
+                        {
+
+                        }
+                    }));
             }
         }
 
