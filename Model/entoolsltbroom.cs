@@ -2,6 +2,9 @@ using System;
 using System.IO;
 using System.Windows.Media.Imaging;
 using Autodesk.Revit.UI;
+using Autodesk.Revit.DB;
+using Autodesk.Revit.DB.Events;
+//using Autodesk.Revit.DB.Events;
 
 namespace EntoolsBroom.Model
 {
@@ -14,10 +17,21 @@ namespace EntoolsBroom.Model
         static string AddInPath = typeof(EnToolsLt).Assembly.Location;
         static string ButtonIconsFolder = Path.GetDirectoryName(AddInPath);
 
+
+        private void OnDocOpened(object sender, DocumentOpenedEventArgs args)
+        {
+            Autodesk.Revit.ApplicationServices.Application app
+                = (Autodesk.Revit.ApplicationServices.Application)sender;
+            Document doc = args.Document;
+            TaskDialog.Show("!", "*");
+            //Your code here...
+        }
+
         public Autodesk.Revit.UI.Result OnStartup(UIControlledApplication application)
         {
             try
             {
+                application.ControlledApplication.DocumentOpened += OnDocOpened;
                 // create customer Ribbon Items
                 RibbonPanel panel = application.CreateRibbonPanel("Broom");
                 PushButtonData list = new PushButtonData("Broom", "Broom", AddInPath, "EntoolsBroom.Model.Broom")
@@ -58,6 +72,7 @@ namespace EntoolsBroom.Model
 
         public Autodesk.Revit.UI.Result OnShutdown(UIControlledApplication application)
         {
+            application.ControlledApplication.DocumentOpened -= OnDocOpened;
             return Autodesk.Revit.UI.Result.Succeeded;
         }
     }
