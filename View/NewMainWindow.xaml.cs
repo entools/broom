@@ -49,12 +49,9 @@ namespace EntoolsBroom.View
 
         private void ButtonBase_OnClick(object sender, RoutedEventArgs e)
         {
-                        Close();
-        }
-        void layoutRoot_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            this.DragMove();
-        }
+            
+            Close();
 
+        }
     }
 }
