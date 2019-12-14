@@ -3,9 +3,9 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using Autodesk.Revit.DB;
 using Autodesk.Revit.UI;
-using EntoolsBroom.ViewModel;
+using Entools.ViewModel;
 using Application = Autodesk.Revit.ApplicationServices.Application;
-using EntoolsBroom.Model;
+using Entools.Model;
 
 namespace EntoolsBroomRevit.Model
 {
@@ -54,11 +54,12 @@ namespace EntoolsBroomRevit.Model
             }
 
 
-            EntoolsBroom.Properties.Settings.Default["names_"] = name;
-            EntoolsBroom.Properties.Settings.Default.Save();
+            Entools.Properties.Settings.Default["names_"] = name;
+            Entools.Properties.Settings.Default.Save();
 
-            Broom broom = new Broom();
-            broom.DelView(_document, name);
+
+            //Broom broom = new Broom();
+            //broom.DelView(_document, name);
 
         }
         #endregion

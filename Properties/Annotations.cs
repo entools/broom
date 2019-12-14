@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace EntoolsBroom.Annotations
+namespace Entools.Annotations
 {
   /// <summary>
   /// Indicates that the value of the marked element could be <c>null</c> sometimes,

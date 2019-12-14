@@ -14,10 +14,10 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Autodesk.Revit.DB;
 using Autodesk.Revit.UI;
-using EntoolsBroom.Model;
+using Entools.Model;
 using MaterialDesignThemes.Wpf;
 
-namespace EntoolsBroom.View
+namespace Entools.View
 {
     /// <summary>
     /// Логика взаимодействия для NewMainVindow.xaml
@@ -47,11 +47,11 @@ namespace EntoolsBroom.View
             //GC.SuppressFinalize(this);
         }
 
-        private void ButtonBase_OnClick(object sender, RoutedEventArgs e)
-        {
+        //private void ButtonBase_OnClick(object sender, RoutedEventArgs e)
+        //{
             
-            Close();
+        //    Close();
 
-        }
+        //}
     }
 }

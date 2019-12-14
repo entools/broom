@@ -1,6 +1,6 @@
 ﻿using Autodesk.Revit.UI;
 
-namespace EntoolsBroom.Model
+namespace Entools.Model
 {
     internal class SelectionManager
     {

@@ -2,7 +2,7 @@
 using System.Collections.ObjectModel;
 using System.Windows.Input;
 
-namespace EntoolsBroom.ViewModel
+namespace Entools.ViewModel
 {
     class NewMainWindowViewModel : ModelBase
     {

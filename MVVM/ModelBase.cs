@@ -1,9 +1,9 @@
-﻿using EntoolsBroom.Annotations;
+﻿using Entools.Annotations;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
 
-namespace EntoolsBroom.ViewModel
+namespace Entools.ViewModel
 {
     class ModelBase :INotifyPropertyChanged
     {

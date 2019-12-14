@@ -4,11 +4,11 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using Autodesk.Revit.DB;
 using Autodesk.Revit.UI;
-using EntoolsBroom.View;
-using EntoolsBroom.ViewModel;
+using Entools.View;
+using Entools.ViewModel;
 using EntoolsBroomRevit.Model;
 
-namespace EntoolsBroom.Model
+namespace Entools.Model
 {
     /// <summary>
     /// Implements the Revit add-in interface IExternalCommand,Move walls, Y direction
@@ -19,7 +19,7 @@ namespace EntoolsBroom.Model
     [Autodesk.Revit.Attributes.Regeneration(Autodesk.Revit.Attributes.RegenerationOption.Manual)]
     [Autodesk.Revit.Attributes.Journaling(Autodesk.Revit.Attributes.JournalingMode.NoCommandData)]
 
-    public class Broom : IExternalCommand
+    public class Entools : IExternalCommand
     {
         public IList<Element> AllElnew(Document doc, BuiltInCategory name)
         {
@@ -217,7 +217,7 @@ namespace EntoolsBroom.Model
 
             List<ElementId> delta = new List<ElementId>() { };
 
-            string names = EntoolsBroom.Properties.Settings.Default["names_rvt"].ToString();
+            string names = Properties.Settings.Default["names_rvt"].ToString();
 
             string[] separators = { "\n" };
             string[] words = names.Split(separators, StringSplitOptions.RemoveEmptyEntries);

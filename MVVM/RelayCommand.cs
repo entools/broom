@@ -1,10 +1,10 @@
-﻿using EntoolsBroom.Annotations;
+﻿using Entools.Annotations;
 using System;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
-using EntoolsBroom.ViewModel;
+using Entools.ViewModel;
 
-namespace EntoolsBroom.ViewModel
+namespace Entools.ViewModel
 {
     public class RelayCommand : ICommand
     {

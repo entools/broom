@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RevitAddIns>
+  <AddIn Type="Application">
+    <Name>EnToolsLt</Name>
+    <Assembly>entools.dll</Assembly>
+    <ClientId>2fa79596-c3f9-4a87-93e7-a8b70b98a924</ClientId>
+    <FullClassName>Entools.Model.Entools</FullClassName>
+    <VendorId>ADSK</VendorId>
+    <VendorDescription>Autodesk, www.autodesk.com</VendorDescription>
+  </AddIn>
+</RevitAddIns>

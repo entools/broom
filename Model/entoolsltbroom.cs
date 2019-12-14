@@ -6,7 +6,7 @@ using Autodesk.Revit.DB;
 using Autodesk.Revit.DB.Events;
 //using Autodesk.Revit.DB.Events;
 
-namespace EntoolsBroom.Model
+namespace Entools.Model
 {
     [Autodesk.Revit.Attributes.Transaction(Autodesk.Revit.Attributes.TransactionMode.Manual)]
     [Autodesk.Revit.Attributes.Regeneration(Autodesk.Revit.Attributes.RegenerationOption.Manual)]
@@ -34,7 +34,7 @@ namespace EntoolsBroom.Model
                 application.ControlledApplication.DocumentOpened += OnDocOpened;
                 // create customer Ribbon Items
                 RibbonPanel panel = application.CreateRibbonPanel("Broom");
-                PushButtonData list = new PushButtonData("Broom", "Broom", AddInPath, "EntoolsBroom.Model.Broom")
+                PushButtonData list = new PushButtonData("Broom", "Broom", AddInPath, "Entools.Model.Broom")
                 {
                     ToolTip = "Delete views and sheets"
                 };
