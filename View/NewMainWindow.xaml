@@ -97,7 +97,7 @@
                 </Button>
                 <TextBlock Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" FontSize="17" Foreground="White" Text=" ENTOOLS BROOM"/>
             </Grid>
-            <dragablz:TabablzControl Grid.Row="1">
+            <dragablz:TabablzControl Grid.Row="1" AllowDrop="True"  FixedHeaderCount="2">
                 <dragablz:TabablzControl.InterTabController>
                     <dragablz:InterTabController/>
                 </dragablz:TabablzControl.InterTabController>

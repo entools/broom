@@ -15,6 +15,7 @@ using System.Windows.Shapes;
 using Autodesk.Revit.DB;
 using Autodesk.Revit.UI;
 using EntoolsBroom.Model;
+using MaterialDesignThemes.Wpf;
 
 namespace EntoolsBroom.View
 {
@@ -25,7 +26,19 @@ namespace EntoolsBroom.View
     {
         public NewMainWindow()
         {
+            InitializeMaterialDesign();
             InitializeComponent();
+        }
+        private void InitializeMaterialDesign()
+        {
+            // Create dummy objects to force the MaterialDesign assemblies to be loaded
+            // from this assembly, which causes the MaterialDesign assemblies to be searched
+            // relative to this assembly's path. Otherwise, the MaterialDesign assemblies
+            // are searched relative to Eclipse's path, so they're not found.
+            var card = new Card();
+            var hue = new MaterialDesignColors.Hue("Dummy", Colors.Black, Colors.White);
+            var dummy = typeof(MaterialDesignThemes.Wpf.Theme);
+            var dummy1 = typeof(Dragablz.TabablzControl);
         }
 
         public void Dispose()

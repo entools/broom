@@ -99,6 +99,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Model\AddInCommand.cs" />
+    <Compile Include="Model\DataGrid.cs" />
     <Compile Include="Model\entoolsltbroom.cs" />
     <Compile Include="Model\RevitModelClass.cs" />
     <Compile Include="MVVM\ModelBase.cs" />
