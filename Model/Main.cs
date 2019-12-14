@@ -7,8 +7,6 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Entools.Model
 {
@@ -18,7 +16,6 @@ namespace Entools.Model
         {
             var uiApplication = revit.Application;
             var uidoc = uiApplication.ActiveUIDocument;
-            var app = uiApplication.Application;
             var doc = uidoc.Document;
 
             NewMainWindowViewModel newMainWindowViewModel = new NewMainWindowViewModel();
@@ -38,6 +35,7 @@ namespace Entools.Model
             ElementCategoryFilter filter = new ElementCategoryFilter(name);
             FilteredElementCollector collector = new FilteredElementCollector(doc);
             IList<Element> list = collector.WherePasses(filter).WhereElementIsNotElementType().ToElements();
+
             return list;
         }
 
@@ -47,6 +45,7 @@ namespace Entools.Model
             using (Transaction tx = new Transaction(doc))
             {
                 tx.Start("Delete");
+
                 foreach (ElementId e in delta)
                 {
                     try
@@ -58,6 +57,7 @@ namespace Entools.Model
                         //TaskDialog.Show("Error", "Can not delet " + e.Name);
                     }
                 }
+
                 tx.Commit();
             }
         }
@@ -65,15 +65,11 @@ namespace Entools.Model
 
         public List<ElementId> Checker(string name, string[] words, ElementId id)
         {
-            List<ElementId> delta = new List<ElementId>() { };
+            List<ElementId> delta = new List<ElementId>();
             bool flag = false;
-
-            //TaskDialog.Show("m", words[0].ToString());
 
             foreach (var word in words)
             {
-                //TaskDialog.Show("m", word);
-
                 if (name == word)
                 {
                     flag = true;
@@ -95,7 +91,7 @@ namespace Entools.Model
             UIDocument uidoc = uiapp.ActiveUIDocument;
             Document doc = uidoc.Document;
 
-            List<Element> views = new List<Element>() { };
+            List<Element> views = new List<Element>();
 
             List<BuiltInCategory> cats = new List<BuiltInCategory>()
             {
@@ -183,8 +179,8 @@ namespace Entools.Model
 
         public void DelView(Document doc, string names)
         {
-            List<Element> views = new List<Element>() { };
-            List<ElementId> delta = new List<ElementId>() { };
+            List<Element> views = new List<Element>();
+            List<ElementId> delta = new List<ElementId>();
 
             List<BuiltInCategory> cats = new List<BuiltInCategory>()
             {
@@ -212,9 +208,6 @@ namespace Entools.Model
             Cleaner(doc, delta);
 
             TaskDialog.Show("Report", "Deleted views.");
-
-            //return Autodesk.Revit.UI.Result.Succeeded;
-            //throw new NotImplementedException();
         }
 
         //---Version_2.0---//
@@ -227,7 +220,7 @@ namespace Entools.Model
             UIDocument uidoc = uiapp.ActiveUIDocument;
             Document doc = uidoc.Document;
 
-            List<ElementId> delta = new List<ElementId>() { };
+            List<ElementId> delta = new List<ElementId>();
 
             string names = Properties.Settings.Default["names_rvt"].ToString();
 
@@ -235,9 +228,7 @@ namespace Entools.Model
             string[] words = names.Split(separators, StringSplitOptions.RemoveEmptyEntries);
 
             List<RevitLinkType> links = new FilteredElementCollector(doc)
-                .OfClass(typeof(RevitLinkType))
-                .Cast<RevitLinkType>()
-                .ToList();
+                .OfClass(typeof(RevitLinkType)).Cast<RevitLinkType>().ToList();
 
             foreach (Element e in links)
             {
@@ -261,11 +252,11 @@ namespace Entools.Model
             IList<ElementId> categoryIds = new List<ElementId>();
 
             foreach (ImportInstance link in new FilteredElementCollector(doc)
-                .OfClass(typeof(ImportInstance))
-                .Cast<ImportInstance>())
+                .OfClass(typeof(ImportInstance)).Cast<ImportInstance>())
 
             {
                 ElementId catId = link.Category.Id;
+
                 if (!categoryIds.Contains(catId))
                     categoryIds.Add(catId);
             }
@@ -276,6 +267,7 @@ namespace Entools.Model
                 doc.Delete(categoryIds);
                 t.Commit();
             }
+
             TaskDialog.Show("Report", "Deleted CAD-link.");
         }
 

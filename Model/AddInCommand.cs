@@ -38,8 +38,6 @@ namespace Entools.Model
                 message = ex.ToString();
                 return Autodesk.Revit.UI.Result.Failed;
             }
-
-
         }
     }
 }

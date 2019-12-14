@@ -2,7 +2,6 @@
 using System;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
-using Entools.ViewModel;
 
 namespace Entools.ViewModel
 {

@@ -5,7 +5,7 @@ using Autodesk.Revit.DB;
 using Autodesk.Revit.UI;
 using Entools.ViewModel;
 using Application = Autodesk.Revit.ApplicationServices.Application;
-using Entools.Model;
+
 
 namespace EntoolsBroomRevit.Model
 {
@@ -24,7 +24,6 @@ namespace EntoolsBroomRevit.Model
             _application = _uiApplication.Application;
             _uiDocument = _uiApplication.ActiveUIDocument;
             _document = _uiDocument.Document;
-
         }
 
 
